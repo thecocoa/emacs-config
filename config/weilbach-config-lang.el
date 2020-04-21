@@ -4,6 +4,7 @@
 
 ;;; C++
 (use-package cc-mode
+  :requires lsp
   :bind
   (:map c++-mode-map
         ("<f6>" . ff-find-other-file))
@@ -15,6 +16,7 @@
 
 
 (use-package ccls
+  :requires lsp
   :config
   (progn
     (setq-default
@@ -28,6 +30,7 @@
 
 ;;; Python
 (use-package python-mode
+  :requires lsp
   :hook
   lsp-deferred)
 
@@ -63,6 +66,40 @@
 (use-package company-auctex
   :config
   (company-auctex-init))
+
+;;; Kotlin
+(use-package kotlin-mode)
+
+;;; GLSL
+(use-package glsl-mode)
+(use-package company-glsl
+  :config
+  (add-to-list 'company-backends 'company-glsl))
+
+;;; Cmake
+(use-package cmake-mode
+  :requires lsp
+  :hook
+  lsp-deferred)
+
+;;; Bash
+(use-package sh-mode
+  :ensure nil
+  :requires lsp
+  :hook
+  lsp-deferred)
+
+;;; Fish
+(use-package fish-mode)
+
+;;; Rust
+(use-package rust-mode)
+
+;;; Meson
+(use-package meson-mode)
+
+;;; Json
+(use-package json-mode)
 
 (provide 'weilbach-config-lang)
 

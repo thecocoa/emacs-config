@@ -13,6 +13,7 @@
 (weilbach/setup-use-package)
 
 (require 'weilbach-config-general)
+(require 'weilbach-config-theme)
 (require 'weilbach-config-helm)
 (require 'weilbach-config-lsp)
 (require 'weilbach-config-lang)

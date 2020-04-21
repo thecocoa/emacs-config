@@ -26,7 +26,8 @@
               tab-width 2
               indent-tabs-mode nil
 
-              gc-cons-threshold 1500000000)
+              ;; gc-cons-threshold 1500000000
+              )
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)

@@ -26,8 +26,6 @@
   (interactive)
   (kill-this-buffer))
 
-(provide 'weilbach-functions)
-
 ;;;###autoload
 (defun weilbach/reload-init-file ()
   "Reloads the Emacs configuration file."
@@ -108,6 +106,11 @@ projectile cache and updates recentf list.  Stolen from spacemacs."
                short-name
                (file-name-nondirectory new-filename)))))
 
+(defvar weilbach/allowed-non-code-buffers '("*scratch*")
+  "Allowed non code buffers.
+This buffers don't get skipped in WEILBACH/NEXT-CODE-BUFFER and
+WEILBACH/PREVIOUS-CODE-BUFFER")
+
 (defun weilbach/next-code-buffer ()
   "Next buffer.  Skip buffer with **."
   (interactive)
@@ -115,6 +118,7 @@ projectile cache and updates recentf list.  Stolen from spacemacs."
     (next-buffer)
     (while
         (and
+         (not (member (buffer-name) weilbach/allowed-non-code-buffers))
          (string-match-p "^\*" (buffer-name))
          (not (equal bread-crumb (buffer-name))))
       (next-buffer))))
@@ -126,8 +130,11 @@ projectile cache and updates recentf list.  Stolen from spacemacs."
     (previous-buffer)
     (while
         (and
+         (not (member (buffer-name) weilbach/allowed-non-code-buffers))
          (string-match-p "^\*" (buffer-name))
          (not (equal bread-crumb (buffer-name))))
       (previous-buffer))))
 
-;;; functions.el ends here
+(provide 'weilbach-functions)
+
+;;; weilbach-functions.el ends here

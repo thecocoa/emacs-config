@@ -3,4 +3,5 @@ elpa
 .emacs-custom.el
 recentf
 transient
+snippets
 init-old.el

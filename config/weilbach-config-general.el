@@ -95,6 +95,13 @@
   :bind
   (("C-x g" . magit-status)))
 
+;;; Yasnippet
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
+(use-package yasnippet-snippets)
+
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

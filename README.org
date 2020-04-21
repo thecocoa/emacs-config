@@ -1,0 +1,22 @@
+* Emacs configuration
+This is my Emacs configuration
+
+** Using
+Clone the repo and copy the content into your emacs directory (Backup
+your existing config before). For example if you using an Emacs
+version >= 27
+#+BEGIN_SRC
+git clone https://gitlab.com/flexw/emacs-config ~/.config/emacs
+#+END_SRC
+Then change into the directory
+#+BEGIN_SRC
+cd ~/.config/emacs
+#+END_SRC
+and create a file
+#+BEGIN_SRC
+touch .emacs-custom.el
+#+END_SRC
+In this file custom will save its variables.
+
+You may need some extra programs to get everything working (look
+through comments in the code).

@@ -1,3 +1,6 @@
 auto-save-list
 elpa
+.emacs-custom.el
+recentf
+transient
 init-old.el

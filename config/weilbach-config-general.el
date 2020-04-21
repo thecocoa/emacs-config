@@ -102,6 +102,13 @@
 
 (use-package yasnippet-snippets)
 
+;;; Smartparens
+(use-package smartparens
+  :config
+  (progn
+    (require 'smartparens-config)
+    (smartparens-global-mode)))
+
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

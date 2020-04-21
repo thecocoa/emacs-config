@@ -114,6 +114,10 @@
   :custom
   (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"))
 
+;;; ZIMPL
+(use-package zimpl-mode
+  :load-path "external/zimpl-mode")
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

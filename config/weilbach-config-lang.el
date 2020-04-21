@@ -14,7 +14,7 @@
   (c-mode-hook . lsp-deferred)
   (c++-mode-hook . lsp-deferred))
 
-
+;; pacaur -S ccls-git
 (use-package ccls
   :requires lsp
   :config
@@ -24,11 +24,13 @@
   :custom
   (ccls-sem-highlight-method 'font-lock))
 
+;; pacaur -S clang
 (use-package clang-format+
   :hook
   (c-mode-common-hook . clang-format+-mode))
 
 ;;; Python
+;; pip install python-language-server[all]
 (use-package python-mode
   :requires lsp
   :hook
@@ -100,6 +102,16 @@
 
 ;;; Json
 (use-package json-mode)
+
+;;; PlantUML
+(use-package plantuml-mode
+  :custom
+  (plantuml-default-exec-mode 'executable))
+(use-package flycheck-plantuml
+  :config
+  (flycheck-plantuml-setup)
+  :custom
+  (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"))
 
 (provide 'weilbach-config-lang)
 

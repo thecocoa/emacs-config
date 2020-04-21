@@ -18,13 +18,7 @@
     (package-install 'use-package))
 
   (require 'use-package)
-  (setq use-package-always-ensure t))
-
-;;;###autoload
-(defun weilbach/kill-buffer-active ()
-  "Kill the active buffer."
-  (interactive)
-  (kill-this-buffer))
+  (setq-default use-package-always-ensure t))
 
 ;;;###autoload
 (defun weilbach/reload-init-file ()

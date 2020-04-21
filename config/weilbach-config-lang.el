@@ -26,6 +26,44 @@
   :hook
   (c-mode-common-hook . clang-format+-mode))
 
+;;; Python
+(use-package python-mode
+  :hook
+  lsp-deferred)
+
+;;; LaTeX
+(use-package tex
+  :ensure auctex
+  :custom
+  (TeX-auto-save t)
+  (TeX-parse-self t)
+  (TeX-syntactic-comment t)
+  ;; Synctex support
+  (TeX-source-correlate-start-server nil)
+  ;; Don't insert line-break at inline math
+  (LaTeX-fill-break-at-separators nil)
+  )
+
+(use-package latex
+  :ensure auctex
+  :hook
+  (LaTeX-mode . TeX-fold-mode)
+  (LaTeX-mode . LaTeX-math-mode)
+  (LaTeX-mode . TeX-source-correlate-mode)
+  (LaTeX-mode . TeX-PDF-mode)
+  (LaTeX-mode . flyspell-mode)
+  (LaTeX-mode . auto-fill-mode))
+
+(use-package auctex-latexmk
+  :config
+  (auctex-latexmk-setup)
+  :custom
+  (auctex-latexmk-inherit-TeX-PDF-mode t))
+
+(use-package company-auctex
+  :config
+  (company-auctex-init))
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

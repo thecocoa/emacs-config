@@ -74,8 +74,8 @@
 ;;; Org
 (use-package org
   :hook
-  (org-mode-hook . #'flyspell-mode)
-  (org-mode-hook . #'auto-fill-mode))
+  (org-mode . flyspell-mode)
+  (org-mode . auto-fill-mode))
 
 (use-package org-ref)
 

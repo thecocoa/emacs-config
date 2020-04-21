@@ -4,15 +4,15 @@
 
 ;;; C++
 (use-package cc-mode
-  :requires lsp
   :bind
   (:map c++-mode-map
         ("<f6>" . ff-find-other-file))
   (:map c-mode-map
         ("<f6>" . ff-find-other-file))
   :hook
-  (c-mode-hook . lsp-deferred)
-  (c++-mode-hook . lsp-deferred))
+  ((c-mode . lsp-deferred)
+   (c++-mode . lsp-deferred))
+  )
 
 ;; pacaur -S ccls-git
 (use-package ccls
@@ -27,7 +27,8 @@
 ;; pacaur -S clang
 (use-package clang-format+
   :hook
-  (c-mode-common-hook . clang-format+-mode))
+  ((c-mode . clang-format+-mode)
+   (c++-mode . clang-format+-mode)))
 
 ;;; Python
 ;; pip install python-language-server[all]
@@ -52,12 +53,12 @@
 (use-package latex
   :ensure auctex
   :hook
-  (LaTeX-mode . TeX-fold-mode)
+  ((LaTeX-mode . TeX-fold-mode)
   (LaTeX-mode . LaTeX-math-mode)
   (LaTeX-mode . TeX-source-correlate-mode)
   (LaTeX-mode . TeX-PDF-mode)
   (LaTeX-mode . flyspell-mode)
-  (LaTeX-mode . auto-fill-mode))
+  (LaTeX-mode . auto-fill-mode)))
 
 (use-package auctex-latexmk
   :config

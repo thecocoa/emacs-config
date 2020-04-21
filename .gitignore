@@ -5,4 +5,6 @@ recentf
 transient
 snippets
 projectile-bookmarks.eld
+.cache
+.lsp-session-v1
 init-old.el

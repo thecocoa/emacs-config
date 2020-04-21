@@ -14,5 +14,7 @@
 
 (require 'weilbach-config-general)
 (require 'weilbach-config-helm)
+(require 'weilbach-config-lsp)
+(require 'weilbach-config-lang)
 
 ;;; init.el ends here

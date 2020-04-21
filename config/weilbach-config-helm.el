@@ -24,6 +24,12 @@
               ([remap recentf-open-files] . helm-recentf)
               ([remap yank-pop] . helm-show-kill-ring)))
 
+(use-package helm-projectile
+  :config
+  (helm-projectile-on)
+  :custom
+  (projectile-completion-system 'helm))
+
 (provide 'weilbach-config-helm)
 
 ;;; weilbach-config-helm.el ends here

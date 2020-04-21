@@ -19,11 +19,14 @@
               mouse-wheel-progressive-speed nil
               mouse-wheel-follow-mouse 't
               scroll-step 1
+              compilation-scroll-output t
 
               make-backup-files nil
 
               tab-width 2
-              indent-tabs-mode nil)
+              indent-tabs-mode nil
+
+              gc-cons-threshold 1500000000)
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -114,6 +117,15 @@
 
 ;;; Yaml
 (use-package yaml-mode)
+
+;;; Projectile
+(use-package projectile
+  :config
+  (projectile-mode +1)
+  :bind
+  (("C-c p" . projectile-command-map)
+   ("<f5>" . projectile-compile-project)
+   ("C-<f5>" . projectile-run-project)))
 
 (provide 'weilbach-config-general)
 

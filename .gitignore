@@ -4,4 +4,5 @@ elpa
 recentf
 transient
 snippets
+projectile-bookmarks.el
 init-old.el

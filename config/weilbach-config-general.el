@@ -109,6 +109,12 @@
     (require 'smartparens-config)
     (smartparens-global-mode)))
 
+;;; Markdown
+(use-package markdown-mode)
+
+;;; Yaml
+(use-package yaml-mode)
+
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

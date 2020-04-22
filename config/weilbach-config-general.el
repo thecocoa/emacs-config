@@ -72,6 +72,13 @@
 ;;; Editing
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Ace Window
+(use-package ace-window
+  :bind
+  (("M-o" . #'ace-window))
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?ö ?ä)))
+
 ;;; Org
 (use-package org
   :hook

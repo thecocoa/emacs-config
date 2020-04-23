@@ -2,9 +2,10 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
+
 (defvar weilbach/emacs-config-dir
   (substring user-init-file 0 (- (length user-init-file) 8))
-  "Directory where the Emacs configuration is stored")
+  "Directory where the Emacs configuration is stored.")
 
 ;; Bring necessary configuration files into scope
 (add-to-list 'load-path (concat weilbach/emacs-config-dir "/config"))

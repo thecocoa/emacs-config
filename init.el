@@ -2,11 +2,17 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
+(defvar weilbach/emacs-config-dir "~/.config/emacs"
+  "Directory where the Emacs configuration is stored")
+
+(when (version< emacs-version "27")
+  (setq weilbach/emacs-config-dir "~/.emacs.d"))
+
 ;; Bring necessary configuration files into scope
-(add-to-list 'load-path "~/.config/emacs/config")
+(add-to-list 'load-path (concat weilbach/emacs-config-dir "/config"))
 
 ;; Set file for custom
-(setq custom-file "~/.config/emacs/.emacs-custom.el")
+(setq custom-file (concat weilbach/emacs-config-dir "/.emacs-custom.el"))
 (load custom-file)
 
 (require 'weilbach-functions)

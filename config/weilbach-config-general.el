@@ -2,7 +2,7 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
-(set-frame-font "Source Code Pro 14")
+(set-frame-font "Source Code Pro 11")
 
 (setq-default user-full-name "Felix Weilbach"
               user-mail-address "felix.weilbach@t-online.de"

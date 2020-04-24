@@ -7,9 +7,9 @@
 (defvar weilbach/dark-theme 'spacemacs-dark "My dark theme.")
 (defvar weilbach/light-theme 'spacemacs-light "My light theme.")
 
-(defvar weilbach/dark-light-themes '(weilbach/dark-theme
-                                     weilbach/light-theme
-                                     )
+(defvar weilbach/dark-light-themes `(,weilbach/dark-theme
+                                     ,weilbach/light-theme
+                                    )
   "Dark and light theme.  That can be toggeld with WEILBACH/TOGGLE-THEME.
 First theme will be used by default")
 
@@ -39,8 +39,30 @@ First theme will be used by default")
   "Check if the current Gnome theme is a dark theme."
   (when (string-match-p "dark" (weilbach/gnome-get-theme)) t))
 
-(setq-default custom-save-themes t
-              weilbach/current-theme (car weilbach/dark-light-themes))
+(defun weilbach/set-current-theme-based-on-os-theme ()
+  "Set WEILBACH/CURRENT-THEME based on the os theme."
+  (when (eq system-type 'gnu/linux)
+  (let*
+      ((xdg-current-desktop (getenv "XDG_CURRENT_DESKTOP")))
+    (cond
+     ((string-equal xdg-current-desktop "GNOME")
+      (progn
+        (if (weilbach/gnome-is-dark-theme)
+            (setq weilbach/current-theme weilbach/dark-theme)
+          (setq weilbach/current-theme weilbach/light-theme))))))))
+
+(defun weilbach/check-for-os-theme-change ()
+  "Check in endless loop if the theme of the OS has changed.
+Set the theme if changed."
+  (while t
+    (let ((current-theme weilbach/current-theme))
+      (progn
+        (weilbach/set-current-theme-based-on-os-theme)
+        (when (not (eq current-theme weilbach/current-theme))
+          (load-theme weilbach/current-theme t))
+        (sleep-for 2)))))
+
+(setq-default custom-save-themes t)
 
 (use-package spacemacs-theme
   :defer t)
@@ -54,18 +76,12 @@ First theme will be used by default")
     (spaceline-toggle-minor-modes-off)))
 
 ;; Set dark or light theme based on the OS theme
-(when (eq system-type 'gnu/linux)
-  (let*
-      ((xdg-current-desktop (getenv "XDG_CURRENT_DESKTOP")))
-    (cond
-     ((string-equal xdg-current-desktop "GNOME")
-      (progn
-        (if (weilbach/gnome-is-dark-theme)
-            (setq weilbach/current-theme weilbach/dark-theme)
-          (setq weilbach/current-theme weilbach/light-theme)))
-      ))))
 
 ;; Load default theme
+(weilbach/set-current-theme-based-on-os-theme)
 (load-theme weilbach/current-theme t)
+
+;; Check in background if the os theme changed
+(make-thread 'weilbach/check-for-os-theme-change)
 
 ;;; weilbach-config-theme.el ends here

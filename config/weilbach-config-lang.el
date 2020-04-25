@@ -16,7 +16,7 @@
 
 ;; pacaur -S ccls-git
 (use-package ccls
-  :requires lsp
+  :requires lsp-mode
   :config
   (progn
     (setq-default
@@ -33,7 +33,7 @@
 ;;; Python
 ;; pip install python-language-server[all]
 (use-package python-mode
-  :requires lsp
+  :requires lsp-mode
   :hook
   lsp-deferred)
 
@@ -81,14 +81,14 @@
 
 ;;; Cmake
 (use-package cmake-mode
-  :requires lsp
+  :requires lsp-mode
   :hook
   lsp-deferred)
 
 ;;; Bash
 (use-package sh-mode
   :ensure nil
-  :requires lsp
+  :requires lsp-mode
   :hook
   lsp-deferred)
 

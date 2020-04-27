@@ -67,13 +67,14 @@ Set the theme if changed."
 (use-package spacemacs-theme
   :defer t)
 
-(use-package spaceline
-  :config
-  (progn
-    (spaceline-spacemacs-theme)
-    (spaceline-helm-mode)
-    (spaceline-info-mode)
-    (spaceline-toggle-minor-modes-off)))
+;; (use-package spaceline
+  ;; :config
+  ;; (progn
+  ;;   (spaceline-spacemacs-theme)
+  ;;   (spaceline-helm-mode)
+  ;;   (spaceline-info-mode)
+  ;;   (spaceline-toggle-minor-modes-off))
+;;   )
 
 ;; Set dark or light theme based on the OS theme
 
@@ -83,5 +84,28 @@ Set the theme if changed."
 
 ;; Check in background if the os theme changed
 (make-thread 'weilbach/check-for-os-theme-change)
+
+;; Configure mode line
+(setq-default mode-line-format
+              (list "%e"
+                    'mode-line-front-space
+                    'mode-line-mule-info
+                    'mode-line-client
+                    'mode-line-modified
+                    'mode-line-remote
+                    'mode-line-frame-identification
+                    'mode-line-buffer-identification
+                    "    "
+                    'mode-line-position
+                    '(vc-mode vc-mode)
+                    " "
+                    "["
+                    'mode-name
+                    "]"
+                    'mode-line-misc-info
+                    'mode-line-end-spaces
+                    ))
+;; Show column numbers
+(column-number-mode)
 
 ;;; weilbach-config-theme.el ends here

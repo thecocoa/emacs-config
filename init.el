@@ -2,6 +2,9 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
+(defvar *weilbach/loading-epoch*
+  (current-time)
+  "The epoch of loading init.el.")
 
 (defvar weilbach/emacs-config-dir
   (substring user-init-file 0 (- (length user-init-file) 8))
@@ -23,5 +26,8 @@
 (require 'weilbach-config-helm)
 (require 'weilbach-config-lsp)
 (require 'weilbach-config-lang)
+
+(message "Loading init.el ... done (%.5fs)"
+         (float-time (time-subtract (current-time) *weilbach/loading-epoch*)))
 
 ;;; init.el ends here

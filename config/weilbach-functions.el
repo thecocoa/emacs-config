@@ -131,6 +131,14 @@ Buffers in WEILBACH/ALLOWED-NON-CODE-BUFFERS will not be skipped"
          (not (equal bread-crumb (buffer-name))))
       (previous-buffer))))
 
+(defun weilbach/set-frame-size (width height)
+  "Set the current frames WIDTH and HEIGHT."
+  (set-frame-size (selected-frame) width height))
+
+(defun weilbach/set-frame-position (x y)
+  "Set the current frame position to X and Y."
+  (set-frame-position (selected-frame) x y))
+
 (provide 'weilbach-functions)
 
 ;;; weilbach-functions.el ends here

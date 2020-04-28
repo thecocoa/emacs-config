@@ -108,4 +108,16 @@ Set the theme if changed."
 ;; Show column numbers
 (column-number-mode)
 
+;; Set frame position and size
+(when window-system
+  (weilbach/set-frame-size 120 24)
+
+  (let ((new-frame-position-x (- (/ (x-display-pixel-width) 2)
+                                 (/  (frame-outer-width) 2)))
+        (new-frame-position-y (- (/ (x-display-pixel-height) 2)
+                                 (/ (frame-outer-height) 2))))
+
+    (weilbach/set-frame-position new-frame-position-x
+                                 new-frame-position-y)))
+
 ;;; weilbach-config-theme.el ends here

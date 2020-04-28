@@ -44,7 +44,7 @@
 (recentf-mode)
 (winner-mode)
 
-(windmove-default-keybindings)
+;; (windmove-default-keybindings)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -55,7 +55,7 @@
                (inhibit-same-window . t)
                (window-height . 0.4)))
 
-(toggle-frame-maximized)
+;; (toggle-frame-maximized)
 
 ;;; Keybindings
 (global-set-key [remap kill-buffer] 'weilbach/kill-buffer-active)
@@ -136,7 +136,8 @@
       :severity 0
       :overlay-category 'flycheck-info-overlay
       :fringe-bitmap 'my-flycheck-fringe-indicator
-      :fringe-face 'flycheck-fringe-info)))
+      :fringe-face 'flycheck-fringe-info)
+    ))
 
 ;;; Magit
 (use-package magit

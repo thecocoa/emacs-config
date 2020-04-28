@@ -139,6 +139,16 @@
       :fringe-face 'flycheck-fringe-info)
     ))
 
+(use-package flycheck-color-mode-line
+  :requires flycheck
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-color-mode-line-mode))
+
+(use-package flycheck-pos-tip
+  :requires flycheck
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-pos-tip-mode))
+
 ;;; Magit
 (use-package magit
   :bind

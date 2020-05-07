@@ -9,3 +9,6 @@ projectile-bookmarks.eld
 .lsp-session-v1
 init-old.el
 tramp
+backups
+places
+projectile.cache

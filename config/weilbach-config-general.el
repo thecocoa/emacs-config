@@ -11,6 +11,9 @@
               show-trailing-whitespace t
               c-default-style "bsd"
               c-basic-offset 2
+              visible-bell t
+
+              load-prefer-newer t
 
               scroll-margin 7
               mouse-wheel-scroll-amount '(1 ((shift) . 1))
@@ -19,13 +22,17 @@
               scroll-step 1
               compilation-scroll-output t
 
-              make-backup-files nil
-
               tab-width 2
+              require-final-newline t
               indent-tabs-mode nil
+              mouse-yank-at-point t
 
-              ;; gc-cons-threshold 1500000000
+              ;; gc-cons-threshold 100000000
               )
+
+(unless backup-directory-alist
+    (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
+                                                   "backups")))))
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -43,6 +50,8 @@
 
 (recentf-mode)
 (winner-mode)
+
+(save-place-mode 1)
 
 ;; (windmove-default-keybindings)
 
@@ -66,6 +75,11 @@
 
 (global-set-key (kbd "M-S ;") 'comment-or-uncomment-region)
 (global-set-key [remap newline] 'newline-and-indent)
+
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ;;; Editing
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -177,11 +191,47 @@
 ;;; Projectile
 (use-package projectile
   :config
-  (projectile-mode +1)
+  (progn
+    (projectile-mode +1)
+
+    ;; Register CMake projects. Projects with cmake folder/file will
+    ;; be recognized
+    (defun weilbach/cmake-compile-command ()
+      "Return a String representing the compile command to run for the given context."
+      (cond
+       ((and (or (eq major-mode 'c++-mode) (eq major-mode 'c-mode))
+             (not (string-match-p (regexp-quote "\\.*/test/\\.*") (buffer-file-name (current-buffer)))))
+        "cmake --build .")
+       ))
+
+    (defun weilbach/cmake-configure-command ()
+      "Return a String representing the configure command to run for the given context."
+      (cond
+       ((or (eq major-mode 'c++-mode) (eq major-mode 'c-mode))
+        "cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug -G Ninja ..")
+       ))
+
+    (defun weilbach/cmake-build-dir ()
+      "Return a String representing the build directory."
+      (concat (projectile-project-root) "build")
+      )
+
+    (projectile-register-project-type 'cmake '("CMakeLists.txt")
+                                      :compilation-dir "build"
+                                      :configure 'weilbach/cmake-configure-command
+                                      :compile 'weilbach/cmake-compile-command
+                                      :src-dir "src"
+                                      :test-dir "tests"
+                                      )
+    )
   :bind
-  (("C-c p" . projectile-command-map)
+  (("M-p" . projectile-command-map)
+   ("C-c p" . projectile-command-map)
    ("<f5>" . projectile-compile-project)
    ("C-<f5>" . projectile-run-project)))
+
+(use-package devhelp
+  :load-path "external/devhelp")
 
 (provide 'weilbach-config-general)
 

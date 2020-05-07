@@ -16,16 +16,37 @@ First theme will be used by default")
 (defvar weilbach/current-theme (car weilbach/dark-light-themes)
   "Current theme.  Gets set by WEILBACH/TOGGLE-THEME.")
 
+(defun weilbach/set-theme (theme)
+  "Set the given THEME active."
+  (load-theme theme t)
+  (set-face-attribute
+   'flycheck-error
+   nil
+   :foreground "white"
+   :background "red")
+
+  (set-face-attribute
+   'flycheck-warning
+   nil
+   :foreground "white"
+   :background "orange")
+
+  (set-face-attribute
+   'flycheck-info
+   nil
+   :foreground "white"
+   :background "blue"))
+
 ;;;###autoload
 (defun weilbach/toggle-theme ()
   "Toggle current theme."
   (interactive)
   (if (eq (car weilbach/dark-light-themes) weilbach/current-theme)
     (progn
-      (load-theme (cadr weilbach/dark-light-themes) t)
+      (weilbach/set-theme (cadr weilbach/dark-light-themes))
       (setq weilbach/current-theme (cadr weilbach/dark-light-themes)))
   (progn
-    (load-theme (car weilbach/dark-light-themes) t)
+    (weilbach/set-theme (car weilbach/dark-light-themes))
     (setq weilbach/current-theme (car weilbach/dark-light-themes)))))
 
 (defun weilbach/gnome-get-theme ()
@@ -59,7 +80,7 @@ Set the theme if changed."
       (progn
         (weilbach/set-current-theme-based-on-os-theme)
         (when (not (eq current-theme weilbach/current-theme))
-          (load-theme weilbach/current-theme t))
+          (weilbach/set-theme weilbach/current-theme))
         (sleep-for 2)))))
 
 (setq-default custom-save-themes t)
@@ -80,7 +101,7 @@ Set the theme if changed."
 
 ;; Load default theme
 (weilbach/set-current-theme-based-on-os-theme)
-(load-theme weilbach/current-theme t)
+(weilbach/set-theme weilbach/current-theme)
 
 ;; Check in background if the os theme changed
 (make-thread 'weilbach/check-for-os-theme-change)

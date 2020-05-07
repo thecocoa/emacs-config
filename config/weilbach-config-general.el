@@ -151,6 +151,7 @@
       :overlay-category 'flycheck-info-overlay
       :fringe-bitmap 'my-flycheck-fringe-indicator
       :fringe-face 'flycheck-fringe-info)
+
     ))
 
 (use-package flycheck-color-mode-line

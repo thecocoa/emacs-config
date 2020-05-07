@@ -71,6 +71,8 @@
 (global-set-key [remap switch-to-buffer] 'ibuffer)
 (global-set-key [remap next-buffer] 'weilbach/next-code-buffer)
 (global-set-key [remap previous-buffer] 'weilbach/previous-code-buffer)
+(global-set-key (kbd "C-.") 'weilbach/next-code-buffer)
+(global-set-key (kbd "C-,") 'weilbach/previous-code-buffer)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
 (global-set-key (kbd "M-S ;") 'comment-or-uncomment-region)

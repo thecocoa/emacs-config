@@ -4,6 +4,8 @@
 
 (provide 'weilbach-config-theme)
 
+(require 'flycheck)
+
 (defvar weilbach/dark-theme 'spacemacs-dark "My dark theme.")
 (defvar weilbach/light-theme 'spacemacs-light "My light theme.")
 
@@ -16,6 +18,14 @@ First theme will be used by default")
 (defvar weilbach/current-theme (car weilbach/dark-light-themes)
   "Current theme.  Gets set by WEILBACH/TOGGLE-THEME.")
 
+(defun weilbach/set-frame-size (width height)
+  "Set the current frames WIDTH and HEIGHT."
+  (set-frame-size (selected-frame) width height))
+
+(defun weilbach/set-frame-position (x y)
+  "Set the current frame position to X and Y."
+  (set-frame-position (selected-frame) x y))
+
 (defun weilbach/set-theme (theme)
   "Set the given THEME active."
   (load-theme theme t)
@@ -23,19 +33,22 @@ First theme will be used by default")
    'flycheck-error
    nil
    :foreground "white"
-   :background "red")
+   :background "red"
+   :underline nil)
 
   (set-face-attribute
    'flycheck-warning
    nil
    :foreground "white"
-   :background "orange")
+   :background "orange"
+   :underline nil)
 
   (set-face-attribute
    'flycheck-info
    nil
    :foreground "white"
-   :background "blue"))
+   :background "blue"
+   :underline nil))
 
 ;;;###autoload
 (defun weilbach/toggle-theme ()
@@ -106,6 +119,28 @@ Set the theme if changed."
 ;; Check in background if the os theme changed
 (make-thread 'weilbach/check-for-os-theme-change)
 
+(defun weilbach/flycheck-mode-line-status-text (&optional status)
+  "Get a text describing STATUS for use in the mode line.
+
+STATUS defaults to `flycheck-last-status-change' if omitted or
+nil."
+  (let ((text (pcase (or status flycheck-last-status-change)
+                (`not-checked "")
+                (`no-checker "-")
+                (`running "*")
+                (`errored "!")
+                (`finished
+                 (let-alist (flycheck-count-errors flycheck-current-errors)
+                   (if (or .error .warning)
+                       (format (concat (propertize "%s" 'face '(:foreground "red"))
+                                       "|"
+                                       (propertize "%s" 'face '(:foreground "orange")))
+                               (or .error 0) (or .warning 0))
+                     "")))
+                (`interrupted ".")
+                (`suspicious "?"))))
+    (concat " " flycheck-mode-line-prefix text)))
+
 ;; Configure mode line
 (setq-default mode-line-format
               (list "%e"
@@ -116,16 +151,15 @@ Set the theme if changed."
                     'mode-line-remote
                     'mode-line-frame-identification
                     'mode-line-buffer-identification
-                    "    "
-                    'mode-line-position
-                    '(vc-mode vc-mode)
                     " "
-                    "["
+                    'mode-line-position
                     'mode-name
-                    "]"
+                    '(vc-mode vc-mode)
+                    '(:eval (weilbach/flycheck-mode-line-status-text))
                     'mode-line-misc-info
                     'mode-line-end-spaces
                     ))
+
 ;; Show column numbers
 (column-number-mode)
 

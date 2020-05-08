@@ -132,10 +132,10 @@ nil."
                 (`finished
                  (let-alist (flycheck-count-errors flycheck-current-errors)
                    (if (or .error .warning)
-                       (format (concat (propertize "%s" 'face '(:foreground "red"))
-                                       "|"
-                                       (propertize "%s" 'face '(:foreground "orange")))
-                               (or .error 0) (or .warning 0))
+                       (format (concat (propertize "·%s" 'face 'flycheck-fringe-error)
+                                       (propertize "·%s" 'face 'flycheck-fringe-warning)
+                                       (propertize "·%s" 'face 'flycheck-fringe-info))
+                               (or .error 0) (or .warning 0) (or .info 0))
                      "")))
                 (`interrupted ".")
                 (`suspicious "?"))))
@@ -150,10 +150,13 @@ nil."
                     'mode-line-modified
                     'mode-line-remote
                     'mode-line-frame-identification
+                    "%l:%C"
+                    " "
                     'mode-line-buffer-identification
                     " "
-                    'mode-line-position
-                    'mode-name
+                    'mode-line-percent-position
+                    " "
+                    '(:eval (propertize mode-name 'face 'mode-line-emphasis))
                     '(vc-mode vc-mode)
                     '(:eval (weilbach/flycheck-mode-line-status-text))
                     'mode-line-misc-info

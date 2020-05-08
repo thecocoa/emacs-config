@@ -2,6 +2,9 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
+(require 'projectile)
+(require 'recentf)
+(require 'dired)
 
 (defun weilbach/setup-use-package ()
   "Setup use-package."
@@ -130,6 +133,12 @@ Buffers in WEILBACH/ALLOWED-NON-CODE-BUFFERS will not be skipped"
          (string-match-p "^\*" (buffer-name))
          (not (equal bread-crumb (buffer-name))))
       (previous-buffer))))
+
+;;;###autoload
+(defun weilbach/open-init-file ()
+  "Open the init file."
+    (interactive)
+   (find-file user-init-file))
 
 (provide 'weilbach-functions)
 

@@ -14,7 +14,8 @@
    (c++-mode . lsp-deferred))
   )
 
-;; pacaur -S ccls-git
+(weilbach/add-package-arch-linux "ccls-git")
+(weilbach/add-package-fedora "ccls")
 (use-package ccls
   :requires lsp-mode
   :config
@@ -24,7 +25,8 @@
   :custom
   (ccls-sem-highlight-method 'font-lock))
 
-;; pacaur -S clang
+(weilbach/add-package-arch-linux "clang")
+(weilbach/add-package-fedora "clang")
 (use-package clang-format+
   :hook
   ((c-mode . clang-format+-mode)
@@ -32,12 +34,15 @@
 
 ;;; Python
 ;; pip install python-language-server[all]
+(weilbach/add-package-python "python-language-server[all]")
 (use-package python-mode
   :requires lsp-mode
   :hook
   lsp-deferred)
 
 ;;; LaTeX
+(weilbach/add-package-arch-linux "tex-live-most")
+(weilbach/add-package-fedora "tex-live-scheme-full")
 (use-package tex
   :ensure auctex
   :custom
@@ -74,18 +79,22 @@
 (use-package kotlin-mode)
 
 ;;; GLSL
+(weilbach/add-package-arch-linux "glslang")
+(weilbach/add-package-fedora "glslang-devel")
 (use-package glsl-mode)
 (use-package company-glsl
   :config
   (add-to-list 'company-backends 'company-glsl))
 
 ;;; Cmake
+(weilbach/add-package-python "cmake-language-server")
 (use-package cmake-mode
   :requires lsp-mode
   :hook
   lsp-deferred)
 
 ;;; Bash
+(weilbach/add-package-node "bash-language-server")
 (use-package sh-mode
   :ensure nil
   :requires lsp-mode
@@ -105,6 +114,8 @@
 (use-package json-mode)
 
 ;;; PlantUML
+(weilbach/add-package-arch-linux "plantuml")
+(weilbach/add-package-fedora "plantuml")
 (use-package plantuml-mode
   :custom
   (plantuml-default-exec-mode 'executable))
@@ -117,6 +128,9 @@
 ;;; ZIMPL
 (use-package zimpl-mode
   :load-path "external/zimpl-mode")
+
+;; Graphviz
+(use-package graphviz-dot-mode)
 
 (provide 'weilbach-config-lang)
 

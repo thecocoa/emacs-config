@@ -100,6 +100,8 @@ Set the theme if changed."
 
 (use-package spacemacs-theme
   :defer t)
+(use-package vs-dark-theme)
+(use-package vs-light-theme)
 
 ;; (use-package spaceline
   ;; :config
@@ -117,7 +119,7 @@ Set the theme if changed."
 (weilbach/set-theme weilbach/current-theme)
 
 ;; Check in background if the os theme changed
-(make-thread 'weilbach/check-for-os-theme-change)
+;; (make-thread 'weilbach/check-for-os-theme-change)
 
 (defun weilbach/flycheck-mode-line-status-text (&optional status)
   "Get a text describing STATUS for use in the mode line.

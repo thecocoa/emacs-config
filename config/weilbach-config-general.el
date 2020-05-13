@@ -27,7 +27,7 @@
               indent-tabs-mode nil
               mouse-yank-at-point t
 
-              ;; gc-cons-threshold 100000000
+              ;; gc-cons-threshold 1000000
               )
 
 (unless backup-directory-alist
@@ -237,6 +237,10 @@
 
 (use-package devhelp
   :load-path "external/devhelp")
+
+(use-package string-inflection
+  :bind
+    (("C-c C-u" . #'string-inflection-cycle)))
 
 (provide 'weilbach-config-general)
 

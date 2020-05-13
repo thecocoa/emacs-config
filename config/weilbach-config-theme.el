@@ -18,6 +18,25 @@ First theme will be used by default")
 (defvar weilbach/current-theme (car weilbach/dark-light-themes)
   "Current theme.  Gets set by WEILBACH/TOGGLE-THEME.")
 
+(defvar weilbach/alpha '(85 . 50)
+  "Alpha value to use for transparency.")
+
+(defun weilbach/toggle-transparency ()
+  "Toggle between transparent and solid backgrund.
+Transparency can be set by setting the variable WEILBACH/ALPHA."
+   (interactive)
+   (let ((alpha (frame-parameter nil 'alpha)))
+     (set-frame-parameter
+      nil 'alpha
+      (if (eql (cond ((numberp alpha) alpha)
+                     ((numberp (cdr alpha)) (cdr alpha))
+                     ;; Also handle undocumented (<active> <inactive>) form.
+                     ((numberp (cadr alpha)) (cadr alpha)))
+               100)
+          weilbach/alpha '(100 . 100)))))
+
+(global-set-key (kbd "C-c t") 'weilbach/toggle-transparency)
+
 (defun weilbach/set-frame-size (width height)
   "Set the current frames WIDTH and HEIGHT."
   (set-frame-size (selected-frame) width height))

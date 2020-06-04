@@ -132,6 +132,34 @@
 ;; Graphviz
 (use-package graphviz-dot-mode)
 
+;; Haskell
+(use-package haskell-mode)
+
+;; JavaScript
+(use-package js2-mode)
+
+(use-package nxml-mode
+  :ensure nil
+  :config
+  (progn
+    (require 'hideshow)
+    (require 'sgml-mode)
+
+    (add-to-list 'hs-special-modes-alist
+                 '(nxml-mode
+                   "<!--\\|<[^/>]*[^/]>"
+                   "-->\\|</[^/>]*[^/]>"
+
+                   "<!--"
+                   sgml-skip-tag-forward
+                   nil))
+
+
+
+    (add-hook 'nxml-mode-hook 'hs-minor-mode)
+
+    (define-key nxml-mode-map (kbd "C-c h") 'hs-toggle-hiding)))
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

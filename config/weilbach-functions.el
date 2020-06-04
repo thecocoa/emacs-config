@@ -2,7 +2,7 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
-(require 'projectile)
+;(require 'projectile)
 (require 'recentf)
 (require 'dired)
 

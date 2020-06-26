@@ -160,6 +160,8 @@
 
     (define-key nxml-mode-map (kbd "C-c h") 'hs-toggle-hiding)))
 
+(use-package web-mode)
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

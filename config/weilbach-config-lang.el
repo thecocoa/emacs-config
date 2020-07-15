@@ -38,7 +38,7 @@
 (use-package python-mode
   :requires lsp-mode
   :hook
-  lsp-deferred)
+  ((python-mode . lsp-deferred)))
 
 ;;; LaTeX
 (weilbach/add-package-arch-linux "tex-live-most")
@@ -161,6 +161,12 @@
     (define-key nxml-mode-map (kbd "C-c h") 'hs-toggle-hiding)))
 
 (use-package web-mode)
+
+(use-package csharp-mode
+  :hook
+  ((csharp-mode . lsp-deferred)
+   )
+  )
 
 (provide 'weilbach-config-lang)
 

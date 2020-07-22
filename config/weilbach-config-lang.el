@@ -168,6 +168,8 @@
    )
   )
 
+(use-package lua-mode)
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

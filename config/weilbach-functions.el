@@ -184,7 +184,13 @@ Buffers in WEILBACH/ALLOWED-NON-CODE-BUFFERS will not be skipped"
 (defun weilbach/open-init-file ()
   "Open the init file."
     (interactive)
-   (find-file user-init-file))
+    (find-file user-init-file))
+
+(defun obar/kill-region-or-backward-word ()
+  (interactive)
+  (if (region-active-p)
+      (kill-region (region-beginning) (region-end))
+    (backward-kill-word 1)))
 
 (provide 'weilbach-functions)
 

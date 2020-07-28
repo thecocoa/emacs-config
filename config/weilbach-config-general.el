@@ -74,6 +74,7 @@
 (global-set-key (kbd "C-.") 'weilbach/next-code-buffer)
 (global-set-key (kbd "C-,") 'weilbach/previous-code-buffer)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+(global-set-key (kbd "C-w") 'obar/kill-region-or-backward-word)
 
 (global-set-key (kbd "M-S ;") 'comment-or-uncomment-region)
 (global-set-key [remap newline] 'newline-and-indent)

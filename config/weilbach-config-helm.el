@@ -22,7 +22,8 @@
               ("C-c o" . helm-occur)
               ("M-/" . helm-dabbrev)
               ([remap recentf-open-files] . helm-recentf)
-              ([remap yank-pop] . helm-show-kill-ring)))
+              ([remap yank-pop] . helm-show-kill-ring)
+              ("C-M-s" . helm-projectile-grep)))
 
 (use-package helm-projectile
   :config

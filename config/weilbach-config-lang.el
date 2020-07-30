@@ -170,6 +170,10 @@
 
 (use-package lua-mode)
 
+;;; HLSL
+(use-package hlsl-mode
+  :load-path "external/hlsl-mode")
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

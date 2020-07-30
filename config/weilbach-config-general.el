@@ -241,7 +241,11 @@
 
 (use-package string-inflection
   :bind
-    (("C-c C-u" . #'string-inflection-cycle)))
+  (("C-c C-u" . #'string-inflection-cycle)))
+
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
 
 (provide 'weilbach-config-general)
 

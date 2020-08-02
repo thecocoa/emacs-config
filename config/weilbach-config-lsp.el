@@ -8,7 +8,8 @@
      )
   :custom
   (lsp-prefer-flymake nil)
-  (lsp-log-io nil))
+  (lsp-log-io nil)
+  :commands lsp)
 
 (use-package lsp-ui
   :hook
@@ -18,16 +19,21 @@
   :bind
   (:map lsp-ui-mode-map
         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-        ([remap xref-find-references] . lsp-ui-peek-find-references)))
+        ([remap xref-find-references] . lsp-ui-peek-find-references))
+  :commands lsp-ui-mode)
 
-(use-package company-lsp
-  :config
-  (progn
-    (push 'company-lsp company-backends)))
+(use-package helm-lsp
+  :commands helm-lsp-workspace-symbol)
+
+;; (use-package company-lsp
+;;   :config
+;;   (progn
+;;     (push 'company-lsp company-backends)))
 
 (use-package lsp-treemacs
   :config
-  (lsp-treemacs-sync-mode 1))
+  (lsp-treemacs-sync-mode 1)
+  :commands lsp-treemacs-errors-list)
 
 (provide 'weilbach-config-lsp)
 

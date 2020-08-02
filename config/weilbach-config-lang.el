@@ -35,10 +35,10 @@
 ;;; Python
 ;; pip install python-language-server[all]
 (weilbach/add-package-python "python-language-server[all]")
-(use-package python-mode
+(use-package python
   :requires lsp-mode
   :hook
-  ((python-mode . lsp-deferred)))
+  ((python-mode . lsp)))
 
 ;;; LaTeX
 (weilbach/add-package-arch-linux "tex-live-most")

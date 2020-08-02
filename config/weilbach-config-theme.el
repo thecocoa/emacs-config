@@ -48,26 +48,29 @@ Transparency can be set by setting the variable WEILBACH/ALPHA."
 (defun weilbach/set-theme (theme)
   "Set the given THEME active."
   (load-theme theme t)
-  (set-face-attribute
-   'flycheck-error
-   nil
-   :foreground "white"
-   :background "red"
-   :underline nil)
 
-  (set-face-attribute
-   'flycheck-warning
-   nil
-   :foreground "white"
-   :background "orange"
-   :underline nil)
+  ;; Set special colors for flycheck
+  ;; (set-face-attribute
+  ;;  'flycheck-error
+  ;;  nil
+  ;;  :foreground "white"
+  ;;  :background "red"
+  ;;  :underline nil)
 
-  (set-face-attribute
-   'flycheck-info
-   nil
-   :foreground "white"
-   :background "blue"
-   :underline nil))
+  ;; (set-face-attribute
+  ;;  'flycheck-warning
+  ;;  nil
+  ;;  :foreground "white"
+  ;;  :background "orange"
+  ;;  :underline nil)
+
+  ;; (set-face-attribute
+  ;;  'flycheck-info
+  ;;  nil
+  ;;  :foreground "white"
+  ;;  :background "blue"
+  ;;  :underline nil)
+  )
 
 ;;;###autoload
 (defun weilbach/toggle-theme ()

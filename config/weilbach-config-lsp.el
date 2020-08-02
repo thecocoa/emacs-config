@@ -3,6 +3,9 @@
 ;;; CODE:
 
 (use-package lsp-mode
+  :config
+  (progn
+     )
   :custom
   (lsp-prefer-flymake nil)
   (lsp-log-io nil))

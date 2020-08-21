@@ -248,6 +248,9 @@
   :config
   (global-undo-tree-mode))
 
+(use-package company-quickhelp
+  :config (company-quickhelp-mode))
+
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

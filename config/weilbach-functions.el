@@ -6,52 +6,6 @@
 (require 'recentf)
 (require 'dired)
 
-;; External packages
-(defvar weilbach/packages-arch-linux '() "Packages to install on Arch Linux.")
-(defvar weilbach/packages-fedora '() "Packages to install on Fedora.")
-(defvar weilbach/packages-python '() "Packages to install for python.")
-(defvar weilbach/packages-node '() "Packages to install for node.")
-
-(defun weilbach/add-package-arch-linux (package)
-  "Add PACKAGE to WEILBACH/PACKAGES-ARCH-LINUX."
-  (add-to-list 'weilbach/packages-arch-linux package))
-
-(defun weilbach/add-package-fedora (package)
-  "Add PACKAGE to WEILBACH/PACKAGES-FEDORA."
-  (add-to-list 'weilbach/packages-fedora package))
-
-(defun weilbach/add-package-python (package)
-  "Add PACKAGE to WEILBACH/PACKAGES-PYTHON."
-  (add-to-list 'weilbach/packages-python package))
-
-(defun weilbach/add-package-node (package)
-  "Add PACKAGE to WEILBACH/PACKAGES-NODE."
-  (add-to-list 'weilbach/packages-node package))
-
-(defun weilbach/install-packages-arch-linux ()
-  "Install all packages from WEILBACH/PACKAGES-ARCH-LINUX."
-  (interactive)
-  (let* ((package-list (string-join weilbach/packages-arch-linux " ")))
-    (async-shell-command (concat "pacaur -S " package-list))))
-
-(defun weilbach/install-packages-fedora ()
-  "Install all packages from WEILBACH/PACKAGES-FEDORA."
-  (interactive)
-  (let* ((package-list (string-join weilbach/packages-fedora " ")))
-    (async-shell-command (concat "dnf install " package-list))))
-
-(defun weilbach/install-packages-python ()
-  "Install all packages from WEILBACH/PACKAGES-PYTHON."
-  (interactive)
-  (let* ((package-list (string-join weilbach/packages-python " ")))
-    (async-shell-command (concat "pip --user install " package-list))))
-
-(defun weilbach/install-packages-node ()
-  "Install all packages from WEILBACH/PACKAGES-NODE."
-  (interactive)
-  (let* ((package-list (string-join weilbach/packages-node " ")))
-    (async-shell-command (concat "npm i -g " package-list))))
-
 (defun weilbach/setup-use-package ()
   "Setup use-package."
   (require 'package)

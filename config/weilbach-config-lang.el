@@ -14,14 +14,14 @@
    (c++-mode . lsp-deferred))
   )
 
-(use-package ccls
-  :requires lsp-mode
-  :config
-  (progn
-    (setq-default
-     flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
-  :custom
-  (ccls-sem-highlight-method 'font-lock))
+;; (use-package ccls
+;;   :requires lsp-mode
+;;   :config
+;;   (progn
+;;     (setq-default
+;;      flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
+;;   :custom
+;;   (ccls-sem-highlight-method 'font-lock))
 
 (use-package clang-format+
   :hook

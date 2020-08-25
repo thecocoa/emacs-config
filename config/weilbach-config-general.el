@@ -53,6 +53,8 @@
 
 (save-place-mode 1)
 
+(put 'narrow-to-region 'disabled nil)
+
 ;; (windmove-default-keybindings)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -83,6 +85,13 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
+(global-set-key (kbd "C-x l") 'goto-line)
+
+(global-set-key (kbd "C-c M") 'mpc)
+(global-set-key (kbd "C-c m p") 'mpc-play)
+(global-set-key (kbd "C-c m P") 'mpc-pause)
+(global-set-key (kbd "C-c m n") 'mpc-next)
+(global-set-key (kbd "C-c m b") 'mpc-prev)
 
 ;;; Editing
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

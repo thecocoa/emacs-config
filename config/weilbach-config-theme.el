@@ -125,15 +125,6 @@ Set the theme if changed."
 (use-package vs-dark-theme)
 (use-package vs-light-theme)
 
-;; (use-package spaceline
-  ;; :config
-  ;; (progn
-  ;;   (spaceline-spacemacs-theme)
-  ;;   (spaceline-helm-mode)
-  ;;   (spaceline-info-mode)
-  ;;   (spaceline-toggle-minor-modes-off))
-;;   )
-
 ;; Set dark or light theme based on the OS theme
 
 ;; Load default theme

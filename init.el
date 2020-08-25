@@ -31,4 +31,3 @@
          (float-time (time-subtract (current-time) *weilbach/loading-epoch*)))
 
 ;;; init.el ends here
-(put 'narrow-to-region 'disabled nil)

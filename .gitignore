@@ -15,3 +15,5 @@ places
 projectile.cache
 .extension
 url
+eshell
+flycheck_weilbach-config-general.el

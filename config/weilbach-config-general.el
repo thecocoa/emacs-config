@@ -7,7 +7,7 @@
 
               inhibit-startup-screen t
               frame-title-format '("%b - Emacs")
-              cursor-type 'bar
+              cursor-type 'box
               show-trailing-whitespace t
               c-default-style "bsd"
               c-basic-offset 2
@@ -102,6 +102,21 @@
 (global-set-key (kbd "C-c m P") 'mpc-pause)
 (global-set-key (kbd "C-c m n") 'mpc-next)
 (global-set-key (kbd "C-c m b") 'mpc-prev)
+
+;; Terminal
+(defun weilbach/pop-shell (arg)
+  "Pop a shell in a side window.
+Pass arg to ‘shell’."
+  (interactive "P")
+  (select-window
+   (display-buffer-in-side-window
+    (save-window-excursion
+      (let ((prefix-arg arg))
+        (call-interactively #'eshell))
+      (current-buffer))
+    '((side . bottom)))))
+
+(global-set-key (kbd "C-t") #'weilbach/pop-shell)
 
 ;;; Editing
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

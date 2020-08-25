@@ -24,30 +24,100 @@ nil."
                 (`suspicious "?"))))
     (concat " " flycheck-mode-line-prefix text)))
 
-;; Configure mode line
-(setq-default mode-line-format
-              (list "%e"
-                    'mode-line-front-space
-                    'mode-line-mule-info
-                    'mode-line-client
-                    'mode-line-modified
-                    'mode-line-remote
-                    'mode-line-frame-identification
-                    "%l:%C"
-                    " "
-                    'mode-line-buffer-identification
-                    " "
-                    'mode-line-percent-position
-                    " "
-                    '(:eval (propertize mode-name 'face 'mode-line-emphasis))
-                    '(vc-mode vc-mode)
-                    '(:eval (weilbach/flycheck-mode-line-status-text))
-                    'mode-line-misc-info
-                    'mode-line-end-spaces
-                    ))
+;; Code stolen from:
+;; https://emacs.stackexchange.com/questions/16654/how-to-re-arrange-things-in-mode-line
 
-;; Show column numbers
-(column-number-mode)
+(defvar lunaryorn-projectile-mode-line
+  '(:propertize
+    (:eval (when (ignore-errors (projectile-project-root))
+             (concat " " (projectile-project-name))))
+    face font-lock-constant-face)
+  "Mode line format for Projectile.")
+(put 'lunaryorn-projectile-mode-line 'risky-local-variable t)
+
+(defvar lunaryorn-vc-mode-line
+  '(" " (:propertize
+         ;; Strip the backend name from the VC status information
+         (:eval (let ((backend (symbol-name (vc-backend (buffer-file-name)))))
+                  (substring vc-mode (+ (length backend) 2))))
+         face font-lock-variable-name-face))
+  "Mode line format for VC Mode.")
+(put 'lunaryorn-vc-mode-line 'risky-local-variable t)
+
+(setq mode-line-align-left
+      '(" "
+        "%e"
+        mode-line-mule-info
+        mode-line-client
+        mode-line-modified
+        mode-line-remote
+        mode-line-frame-identification
+        mode-line-buffer-identification
+        ; (:eval (propertize mode-name 'face 'mode-line-emphasis))
+        lunaryorn-projectile-mode-line
+        (vc-mode lunaryorn-vc-mode-line)
+        " "
+        mode-line-misc-info))
+
+(setq mode-line-align-middle
+      '(""
+        " "
+        "%l:%C"
+        ))
+
+
+(setq mode-line-align-right
+      '(""
+        " "
+        (:eval (weilbach/flycheck-mode-line-status-text))
+        " "
+        mode-line-percent-position
+        ))
+
+(defun mode-line-fill-right (face reserve)
+  "Return empty space using FACE and leaving RESERVE space on the right."
+  (unless reserve
+    (setq reserve 20))
+  (when (and window-system (eq 'right (get-scroll-bar-mode)))
+    (setq reserve (- reserve 3)))
+  (propertize " "
+              'display `((space :align-to (- (+ right right-fringe right-margin) ,reserve)))
+              'face face))
+
+
+(defun mode-line-fill-center (face reserve)
+  "Return empty space using FACE to the center of remaining space leaving RESERVE space on the right."
+  (unless reserve
+    (setq reserve 20))
+  (when (and window-system (eq 'right (get-scroll-bar-mode)))
+    (setq reserve (- reserve 3)))
+  (propertize " "
+              'display `((space :align-to (- (+ center (.5 . right-margin)) ,reserve
+                                             (.5 . left-margin))))
+              'face face))
+
+
+
+
+(defconst RIGHT_PADDING 1)
+
+(defun reserve-left/middle ()
+  (/ (length (format-mode-line mode-line-align-middle)) 2))
+
+(defun reserve-middle/right ()
+  (+ RIGHT_PADDING (length (format-mode-line mode-line-align-right))))
+
+(setq-default mode-line-format
+              (list
+               mode-line-align-left
+               '(:eval (mode-line-fill-center 'mode-line
+                                              (reserve-left/middle)))
+               mode-line-align-middle
+               '(:eval
+                 (mode-line-fill-right 'mode-line
+                                       (reserve-middle/right)))
+               mode-line-align-right
+               ))
 
 (provide 'weilbach-config-modeline)
 

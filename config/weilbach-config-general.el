@@ -76,8 +76,6 @@
                (inhibit-same-window . t)
                (window-height . 0.4)))
 
-;; (toggle-frame-maximized)
-
 ;;; Keybindings
 (global-set-key [remap kill-buffer] 'weilbach/kill-buffer-active)
 (global-set-key [remap switch-to-buffer] 'ibuffer)
@@ -193,11 +191,6 @@ Pass arg to ‘shell’."
       :fringe-face 'flycheck-fringe-info)
 
     ))
-
-;; (use-package flycheck-color-mode-line
-;;   :requires flycheck
-;;   :config
-;;   (add-hook 'flycheck-mode-hook #'flycheck-color-mode-line-mode))
 
 (use-package flycheck-pos-tip
   :requires flycheck

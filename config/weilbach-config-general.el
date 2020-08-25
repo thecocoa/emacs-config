@@ -31,6 +31,7 @@
 
               initial-scratch-message nil
               initial-major-mode 'fundamental-mode
+
               )
 
 ;; Supress startup message
@@ -42,6 +43,7 @@
     (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                    "backups")))))
 
+(set-fringe-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode -1)

@@ -28,7 +28,15 @@
               mouse-yank-at-point t
 
               ;; gc-cons-threshold 1000000
+
+              initial-scratch-message nil
+              initial-major-mode 'fundamental-mode
               )
+
+;; Supress startup message
+(put 'inhibit-startup-echo-area-message 'saved-value t)
+(setq inhibit-startup-echo-area-message (user-login-name))
+
 
 (unless backup-directory-alist
     (setq backup-directory-alist `(("." . ,(concat user-emacs-directory

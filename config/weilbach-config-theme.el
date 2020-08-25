@@ -4,8 +4,16 @@
 
 (require 'flycheck)
 
-(defvar weilbach/dark-theme 'spacemacs-dark "My dark theme.")
-(defvar weilbach/light-theme 'spacemacs-light "My light theme.")
+(defvar weilbach/dark-theme
+  'spacemacs-dark
+  ;'deeper-blue
+  "My dark theme."
+  )
+(defvar weilbach/light-theme
+  'spacemacs-light
+;  nil
+  "My light theme."
+  )
 
 (defvar weilbach/dark-light-themes `(,weilbach/dark-theme
                                      ,weilbach/light-theme
@@ -45,30 +53,39 @@ Transparency can be set by setting the variable WEILBACH/ALPHA."
 
 (defun weilbach/set-theme (theme)
   "Set the given THEME active."
+  (disable-theme custom-enabled-themes)
+
+  (if (not theme)
+      (disable-theme custom-enabled-themes)
   (load-theme theme t)
 
   ;; Set special colors for flycheck
-  ;; (set-face-attribute
-  ;;  'flycheck-error
-  ;;  nil
-  ;;  :foreground "white"
-  ;;  :background "red"
-  ;;  :underline nil)
+  (set-face-attribute
+   'flycheck-error
+   nil
+   ;; :foreground "white"
+   ;; :background "red"
+   ;; :underline nil
+   :underline '(:color "red" :style line)
+   )
 
-  ;; (set-face-attribute
-  ;;  'flycheck-warning
-  ;;  nil
-  ;;  :foreground "white"
-  ;;  :background "orange"
-  ;;  :underline nil)
+  (set-face-attribute
+   'flycheck-warning
+   nil
+   ;; :foreground "white"
+   ;; :background "orange"
+   :underline '(:color "orange" :style line)
+   )
 
-  ;; (set-face-attribute
-  ;;  'flycheck-info
-  ;;  nil
-  ;;  :foreground "white"
-  ;;  :background "blue"
-  ;;  :underline nil)
-  )
+  (set-face-attribute
+   'flycheck-info
+   nil
+   ;; :foreground "white"
+   ;; :background "blue"
+   ;; :underline nil
+   :underline '(:color "blue" :style line)
+   )
+  ))
 
 ;;;###autoload
 (defun weilbach/toggle-theme ()
@@ -120,8 +137,6 @@ Set the theme if changed."
 
 (use-package spacemacs-theme
   :defer t)
-(use-package vs-dark-theme)
-(use-package vs-light-theme)
 
 ;; Set dark or light theme based on the OS theme
 

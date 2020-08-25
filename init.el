@@ -22,8 +22,8 @@
 
 (require 'weilbach-config-general)
 (require 'weilbach-config-modeline)
-;; (require 'weilbach-config-font)
-;; (require 'weilbach-config-theme)
+(require 'weilbach-config-font)
+(require 'weilbach-config-theme)
 (require 'weilbach-config-helm)
 (require 'weilbach-config-lsp)
 (require 'weilbach-config-lang)

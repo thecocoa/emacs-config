@@ -141,7 +141,7 @@ Pass arg to ‘shell’."
     (global-company-mode)
     )
   :custom
-  (company-minimum-prefix-length 1)
+  (company-minimum-prefix-length 3)
   (company-idle-delay 0.0))
 
 ;;; Flycheck

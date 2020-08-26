@@ -61,6 +61,9 @@
 
 (global-auto-revert-mode t)
 
+;; Make Emacs camel case aware
+(global-subword-mode 1)
+
 (recentf-mode)
 (winner-mode)
 

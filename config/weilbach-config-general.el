@@ -280,6 +280,15 @@
 (use-package company-quickhelp
   :config (company-quickhelp-mode))
 
+(use-package which-key
+  :config (progn
+            (which-key-mode)
+            (which-key-setup-side-window-bottom)
+            (setq which-key-idle-delay 3.0)))
+
+(use-package pdf-tools
+  :config (pdf-tools-install))
+
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

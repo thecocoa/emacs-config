@@ -2,9 +2,9 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
-;(require 'projectile)
-(require 'recentf)
-(require 'dired)
+(eval-when-compile (require 'recentf)
+                   (require 'dired)
+                   (require 'projectile))
 
 (defun weilbach/setup-use-package ()
   "Setup use-package."
@@ -141,6 +141,7 @@ Buffers in WEILBACH/ALLOWED-NON-CODE-BUFFERS will not be skipped"
     (find-file user-init-file))
 
 (defun obar/kill-region-or-backward-word ()
+  "Kill region or kill last word if no active region."
   (interactive)
   (if (region-active-p)
       (kill-region (region-beginning) (region-end))

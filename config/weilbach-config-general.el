@@ -2,6 +2,9 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
+(eval-when-compile
+  (require 'projectile))
+
 (setq-default user-full-name "Felix Weilbach"
               user-mail-address "felix.weilbach@t-online.de"
 
@@ -103,8 +106,7 @@
 
 ;; Terminal
 (defun weilbach/pop-shell (arg)
-  "Pop a shell in a side window.
-Pass arg to ‘shell’."
+  "Pop a shell in a side window and ass ARG to ‘shell’."
   (interactive "P")
   (select-window
    (display-buffer-in-side-window

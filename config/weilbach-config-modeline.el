@@ -2,6 +2,13 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
+(eval-when-compile
+  (require 'flycheck)
+
+  (defvar mode-line-align-left)
+  (defvar mode-line-align-middle)
+  (defvar mode-line-align-right))
+
 (defun weilbach/flycheck-mode-line-status-text (&optional status)
   "Get a text describing STATUS for use in the mode line.
 
@@ -99,13 +106,15 @@ nil."
 
 
 
-(defconst RIGHT_PADDING 1)
+(defconst WEILBACH/RIGHT_PADDING 1)
 
 (defun reserve-left/middle ()
+  "Reserve space for middle."
   (/ (length (format-mode-line mode-line-align-middle)) 2))
 
 (defun reserve-middle/right ()
-  (+ RIGHT_PADDING (length (format-mode-line mode-line-align-right))))
+  "Reserve space for right."
+  (+ WEILBACH/RIGHT_PADDING (length (format-mode-line mode-line-align-right))))
 
 (setq-default mode-line-format
               (list

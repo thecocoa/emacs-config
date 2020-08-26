@@ -1,5 +1,6 @@
 ;;; init.el --- Felix's Emacs configuration
 ;;; COMMENTARY:
+;; Byte compile directory C-u 0 M-x byte-recompile-directory
 ;;; CODE:
 
 (defvar *weilbach/loading-epoch*
@@ -11,11 +12,11 @@
   "Directory where the Emacs configuration is stored.")
 
 ;; Bring necessary configuration files into scope
-(add-to-list 'load-path (concat weilbach/emacs-config-dir "/config"))
+(add-to-list 'load-path (concat weilbach/emacs-config-dir "config"))
 
 ;; Set file for custom
-(setq custom-file (concat weilbach/emacs-config-dir "/.emacs-custom.el"))
-(load custom-file)
+(setq-default custom-file (concat weilbach/emacs-config-dir ".emacs-custom.el"))
+(ignore-errors (load custom-file)) ;; It may no exist now
 
 (require 'weilbach-functions)
 (weilbach/setup-use-package)

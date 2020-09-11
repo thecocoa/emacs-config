@@ -15,7 +15,9 @@
 (ignore-errors (load custom-file)) ;; It may not exist now
 
 ;; Maybe there is a user config
-(ignore-errors (load user-emacs-directory "user/user-config-before.el"))
+(ignore-errors (load (concat
+                      user-emacs-directory
+                      "user/user-config-before.el")))
 
 (require 'weilbach-functions)
 (weilbach/setup-use-package)
@@ -29,7 +31,9 @@
 (require 'weilbach-config-lang)
 
 ;; Maybe there is a user config
-(ignore-errors (load user-emacs-directory "user/user-config-after.el"))
+(ignore-errors (load (concat
+                      user-emacs-directory
+                      "user/user-config-after.el")))
 
 (message "Loading init.el ... done (%.5fs)"
          (float-time (time-subtract (current-time) loading-epoch)))

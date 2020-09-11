@@ -14,14 +14,14 @@
    (c++-mode . lsp-deferred))
   )
 
-;; (use-package ccls
-;;   :requires lsp-mode
-;;   :config
-;;   (progn
-;;     (setq-default
-;;      flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
-;;   :custom
-;;   (ccls-sem-highlight-method 'font-lock))
+(use-package ccls
+  :requires lsp-mode
+  :config
+  (progn
+    (setq-default
+     flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
+  :custom
+  (ccls-sem-highlight-method 'font-lock))
 
 (use-package clang-format+
   :hook
@@ -44,6 +44,15 @@
   (TeX-source-correlate-start-server nil)
   ;; Don't insert line-break at inline math
   (LaTeX-fill-break-at-separators nil)
+  :config
+  (progn
+    ;; Use pdf-tools to open PDF files
+    (setq-default TeX-view-program-selection '((output-pdf "PDF Tools"))
+                  TeX-source-correlate-start-server t)
+    ;; Update PDF buffers after successful LaTeX runs
+    (add-hook 'TeX-after-compilation-finished-functions
+              #'TeX-revert-document-buffer)
+    )
   )
 
 (use-package latex

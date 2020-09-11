@@ -1,4 +1,6 @@
 session*
+user/*
+*~
 auto-save-list
 elpa
 .emacs-custom.el

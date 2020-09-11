@@ -2,8 +2,6 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
-(require 'flycheck)
-
 (defvar weilbach/dark-theme
   'spacemacs-dark
   ;'deeper-blue

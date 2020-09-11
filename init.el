@@ -3,21 +3,21 @@
 ;; Byte compile directory C-u 0 M-x byte-recompile-directory
 ;;; CODE:
 
-(defvar *weilbach/loading-epoch*
+(defvar loading-epoch
   (current-time)
   "The epoch of loading init.el.")
 
-(defvar weilbach/emacs-config-dir
-  (substring user-init-file 0 (- (length user-init-file) 8))
-  "Directory where the Emacs configuration is stored.")
-
 ;; Bring necessary configuration files into scope
-(add-to-list 'load-path (concat weilbach/emacs-config-dir "config"))
+(add-to-list 'load-path (concat user-emacs-directory "config"))
 
 ;; Set file for custom
-(setq-default custom-file (concat weilbach/emacs-config-dir ".emacs-custom.el"))
-(ignore-errors (load custom-file)) ;; It may no exist now
+(setq-default custom-file (concat user-emacs-directory ".emacs-custom.el"))
+(ignore-errors (load custom-file)) ;; It may not exist now
 
+;; Maybe there is a user config
+(ignore-errors (load user-emacs-directory "user/user-config-before.el"))
+
+(require 'weilbach-variables)
 (require 'weilbach-functions)
 (weilbach/setup-use-package)
 
@@ -29,7 +29,10 @@
 (require 'weilbach-config-lsp)
 (require 'weilbach-config-lang)
 
+;; Maybe there is a user config
+(ignore-errors (load user-emacs-directory "user/user-config-after.el"))
+
 (message "Loading init.el ... done (%.5fs)"
-         (float-time (time-subtract (current-time) *weilbach/loading-epoch*)))
+         (float-time (time-subtract (current-time) loading-epoch)))
 
 ;;; init.el ends here

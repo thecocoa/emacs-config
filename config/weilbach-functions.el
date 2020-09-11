@@ -2,13 +2,9 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
-(eval-when-compile (require 'recentf)
-                   (require 'dired)
-                   (require 'projectile))
-
 (defun weilbach/setup-use-package ()
   "Setup use-package."
-  (require 'package)
+  (eval-when-compile (require 'package))
   (package-initialize)
 
   ;; (add-to-list 'package-archives
@@ -45,6 +41,7 @@ projectile cache when it's possible.
 When ASK-USER is non-nil, user will be asked to confirm file
 removal.  Stolen from spacemacs."
   (interactive "f")
+  (eval-when-compile (require 'projectile))
   (when (and filename (file-exists-p filename))
     (let ((buffer (find-buffer-visiting filename)))
       (when buffer
@@ -64,7 +61,9 @@ When NEW-FILENAME is not specified, asks user for a new name.
 Also renames associated buffers (if any exists), invalidates
 projectile cache and updates recentf list.  Stolen from spacemacs."
   (interactive "f")
-  (require 'dired)
+  (eval-when-compile
+    (require 'dired)
+    (require 'recentf))
   (when (and filename (file-exists-p filename))
     (let* ((is-dir (file-directory-p filename))
            (short-name

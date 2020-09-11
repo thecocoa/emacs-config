@@ -2,9 +2,6 @@
 ;;; COMMENTARY:
 ;;; CODE:
 
-(eval-when-compile
-  (require 'projectile))
-
 (setq-default user-full-name "Felix Weilbach"
               user-mail-address "felix.weilbach@t-online.de"
 
@@ -232,36 +229,6 @@
   :config
   (progn
     (projectile-mode +1)
-
-    ;; Register CMake projects. Projects with cmake folder/file will
-    ;; be recognized
-    (defun weilbach/cmake-compile-command ()
-      "Return a String representing the compile command to run for the given context."
-      (cond
-       ((and (or (eq major-mode 'c++-mode) (eq major-mode 'c-mode))
-             (not (string-match-p (regexp-quote "\\.*/test/\\.*") (buffer-file-name (current-buffer)))))
-        "cmake --build .")
-       ))
-
-    (defun weilbach/cmake-configure-command ()
-      "Return a String representing the configure command to run for the given context."
-      (cond
-       ((or (eq major-mode 'c++-mode) (eq major-mode 'c-mode))
-        "cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug -G Ninja ..")
-       ))
-
-    (defun weilbach/cmake-build-dir ()
-      "Return a String representing the build directory."
-      (concat (projectile-project-root) "build")
-      )
-
-    (projectile-register-project-type 'cmake '("CMakeLists.txt")
-                                      :compilation-dir "build"
-                                      :configure 'weilbach/cmake-configure-command
-                                      :compile 'weilbach/cmake-compile-command
-                                      :src-dir "src"
-                                      :test-dir "tests"
-                                      )
     )
   :bind
   (("M-p" . projectile-command-map)

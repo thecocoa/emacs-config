@@ -17,7 +17,6 @@
 ;; Maybe there is a user config
 (ignore-errors (load user-emacs-directory "user/user-config-before.el"))
 
-(require 'weilbach-variables)
 (require 'weilbach-functions)
 (weilbach/setup-use-package)
 

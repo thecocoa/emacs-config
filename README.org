@@ -8,15 +8,6 @@ version >= 27
 #+BEGIN_SRC
 git clone https://gitlab.com/flexw/emacs-config ~/.config/emacs
 #+END_SRC
-Then change into the directory
-#+BEGIN_SRC
-cd ~/.config/emacs
-#+END_SRC
-and create a file
-#+BEGIN_SRC
-touch .emacs-custom.el
-#+END_SRC
-In this file custom will save its variables.
 
 You may need some extra programs to get everything working (look
 through comments in the code).

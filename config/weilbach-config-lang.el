@@ -15,7 +15,6 @@
   )
 
 (use-package ccls
-  :requires lsp-mode
   :config
   (progn
     (setq-default
@@ -29,9 +28,9 @@
    (c++-mode . clang-format+-mode)))
 
 (use-package python
-  :requires lsp-mode
   :hook
-  ((python-mode . lsp)))
+  ((python-mode . lsp-deferred))
+  )
 
 ;;; LaTeX
 (use-package tex

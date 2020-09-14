@@ -31,6 +31,12 @@
   :custom
   (projectile-completion-system 'helm))
 
+(use-package helm-flyspell
+  :bind
+  (:map flyspell-mode-map
+        ("C-;" . helm-flyspell-correct))
+  )
+
 (provide 'weilbach-config-helm)
 
 ;;; weilbach-config-helm.el ends here

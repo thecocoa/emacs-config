@@ -6,6 +6,7 @@ auto-save-list
 elpa
 .emacs-custom.el
 recentf
+.dap-breakpoints
 transient
 snippets
 projectile-bookmarks.eld

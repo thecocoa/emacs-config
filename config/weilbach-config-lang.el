@@ -167,6 +167,9 @@
 (use-package hlsl-mode
   :load-path "external/hlsl-mode")
 
+;;; Windows PowerShell
+(use-package powershell)
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

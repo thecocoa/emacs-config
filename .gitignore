@@ -1,5 +1,6 @@
 session*
 user/*
+persp-confs
 *~
 auto-save-list
 elpa

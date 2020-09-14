@@ -259,6 +259,26 @@
 (use-package pdf-tools
   :config (pdf-tools-install))
 
+(use-package saveplace-pdf-view
+  :config
+  (progn
+    (save-place-mode 1)
+    ))
+
+(use-package workgroups
+  :config
+  (progn
+    (setq wg-prefix-key (kbd "C-c w"))
+    ))
+
+(use-package persp-mode
+  :config
+  (progn
+    (setq wg-morph-on nil) ;; switch off animation
+    (setq persp-autokill-buffer-on-remove 'kill-weak)
+    (add-hook 'after-init-hook #'(lambda () (persp-mode 1)))
+    ))
+
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

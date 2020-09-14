@@ -35,6 +35,12 @@
   (lsp-treemacs-sync-mode 1)
   :commands lsp-treemacs-errors-list)
 
+;; Install cpp dap tools with M-x dap-cpptools-setup
+(use-package dap-mode
+  :hook
+  (lsp-mode . (lambda () (require 'dap-cpptools)))
+  )
+
 (provide 'weilbach-config-lsp)
 
 ;;; weilbach-config-lsp.el ends here

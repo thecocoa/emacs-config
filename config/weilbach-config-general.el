@@ -79,6 +79,23 @@
                (inhibit-same-window . t)
                (window-height . 0.4)))
 
+;; Close compilation buffer on q
+(add-hook 'compilation-mode-hook (lambda ()
+                                   (local-set-key (kbd "q") #'kill-buffer-and-window)))
+
+;; Make compilation buffer fullscreen on f
+;;;###autoload
+(defun compilation-buffer-fullscreen ()
+  "Make current open compilation buffer fullscreen."
+  (interactive)
+  (select-window (previous-window))
+  (switch-to-buffer "*compilation*")
+  (delete-other-windows))
+
+(add-hook 'compilation-mode-hook (lambda ()
+                                   (local-set-key (kbd "f") #'compilation-buffer-fullscreen)))
+
+
 ;;; Keybindings
 (global-set-key [remap kill-buffer] 'weilbach/kill-buffer-active)
 (global-set-key [remap switch-to-buffer] 'ibuffer)

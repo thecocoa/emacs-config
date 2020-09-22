@@ -3,12 +3,17 @@
 ;;; CODE:
 
 (use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
   :config
   (progn
-     )
+    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+    )
   :custom
   (lsp-prefer-flymake nil)
   (lsp-log-io nil)
+  :hook
+  (lsp-mode . lsp-enable-which-key-integration)
   :commands lsp)
 
 (use-package lsp-ui

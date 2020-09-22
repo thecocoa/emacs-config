@@ -6,9 +6,9 @@
 (use-package cc-mode
   :bind
   (:map c++-mode-map
-        ("<f6>" . ff-find-other-file))
+        ("C-c s" . ff-find-other-file))
   (:map c-mode-map
-        ("<f6>" . ff-find-other-file))
+        ("C-c s" . ff-find-other-file))
   :hook
   ((c-mode . lsp-deferred)
    (c++-mode . lsp-deferred))
@@ -110,8 +110,8 @@
 
 ;;; PlantUML
 (use-package plantuml-mode
-  :custom
-  (plantuml-default-exec-mode 'executable))
+  :config
+  (setq-default plantuml-default-exec-mode 'executable))
 (use-package flycheck-plantuml
   :config
   (flycheck-plantuml-setup)

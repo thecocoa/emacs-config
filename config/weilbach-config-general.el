@@ -250,8 +250,8 @@
   :bind
   (("M-p" . projectile-command-map)
    ("C-c p" . projectile-command-map)
-   ("<f5>" . projectile-compile-project)
-   ("C-<f5>" . projectile-run-project)))
+   ("C-c c" . projectile-compile-project)
+   ("C-c r" . projectile-run-project)))
 
 (use-package devhelp
   :load-path "external/devhelp")

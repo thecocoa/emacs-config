@@ -21,6 +21,7 @@
   (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-sideline-enable nil)
+  (lsp-ui-doc-delay 2)
   :bind
   (:map lsp-ui-mode-map
         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)

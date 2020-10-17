@@ -114,7 +114,10 @@
   (setq-default plantuml-default-exec-mode 'executable))
 (use-package flycheck-plantuml
   :config
-  (flycheck-plantuml-setup)
+  (progn
+    (flycheck-plantuml-setup)
+    (setq-default flycheck-plantuml-executable "/usr/share/java/plantuml/plantuml.jar")
+    )
   :custom
   (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"))
 

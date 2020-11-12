@@ -29,6 +29,7 @@
 (require 'weilbach-config-helm)
 (require 'weilbach-config-lsp)
 (require 'weilbach-config-lang)
+(require 'weilbach-config-mu4e)
 
 ;; Maybe there is a user config
 (ignore-errors (load (concat
@@ -39,3 +40,4 @@
          (float-time (time-subtract (current-time) loading-epoch)))
 
 ;;; init.el ends here
+(put 'downcase-region 'disabled nil)

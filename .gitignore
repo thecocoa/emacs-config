@@ -22,3 +22,4 @@ url
 eshell
 flycheck_weilbach-config-general.el
 *.elc
+network-security.data

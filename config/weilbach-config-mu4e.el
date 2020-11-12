@@ -105,9 +105,17 @@
           mu4e-use-maildirs-extension t
           mu4e-enable-async-operations t
           mu4e-attachment-dir "~/Downloads"
+          mu4e-confirm-quit nil
+          mu4e-view-html-plaintext-ratio-heuristic  most-positive-fixnum
 
           ;; mu4e-compose-context-policy nil
           )
+
+    (add-hook 'mu4e-compose-mode-hook '(lambda ()
+                                         (progn
+                                           (flyspell-mode)
+                                           (ispell-change-dictionary "de_DE")
+                                           )))
     )
   )
 
@@ -118,15 +126,6 @@
     (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
     ))
 
-(require 'smtpmail)
-(setq message-send-mail-function 'smtpmail-send-it
-      starttls-use-gnutls t
-      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-      smtpmail-auth-credentials
-      '(("smtp.gmail.com" 587 "feweilbach@gmail.com" nil))
-      smtpmail-default-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-service 587)
 
 ;; Don't keep message buffers around
 (setq message-kill-buffer-on-exit t)

@@ -41,6 +41,9 @@
                         '(helm-selection ((t (:background "darkseagreen2"))))
                         '(helm-source-header ((t (:background "ForestGreen" :bold t))))
                         '(helm-candidate-number ((t (:background "gainsboro"))))
+
+                        '(mu4e-highlight-face ((t (:foreground "black" :background "gainsboro"))))
+                        '(mu4e-header-key-face ((t (:foreground "DarkGreen" :bold t))))
                         )
 
 (provide 'weilbach-light-theme)

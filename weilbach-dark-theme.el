@@ -42,6 +42,10 @@
                         '(helm-selection ((t (:background "#23272A"))))
                         '(helm-source-header ((t (:background "MediumPurple" :bold t))))
                         '(helm-candidate-number ((t (:background "#23272A"))))
+
+                        '(mu4e-highlight-face ((t (:foreground "snow3" :background "#23272A"))))
+                        '(mu4e-header-key-face ((t (:foreground "DarkGreen" :bold t))))
+
                         )
 
 (provide 'weilbach-dark-theme)

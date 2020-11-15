@@ -60,8 +60,9 @@ nil."
         mode-line-remote
         mode-line-frame-identification
         mode-line-buffer-identification
-        ; (:eval (propertize mode-name 'face 'mode-line-emphasis))
-        lunaryorn-projectile-mode-line
+        ;; (:eval (propertize mode-name 'face 'mode-line-emphasis))
+        ;; FIXME: Causes slow down on TRAMP
+        ;; lunaryorn-projectile-mode-line
         (vc-mode lunaryorn-vc-mode-line)
         " "
         mode-line-misc-info))

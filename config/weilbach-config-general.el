@@ -11,7 +11,8 @@
               show-trailing-whitespace t
               c-default-style "bsd"
               c-basic-offset 2
-              visible-bell t
+              visible-bell nil
+              ring-bell-function 'ignore
 
               load-prefer-newer t
 
@@ -134,6 +135,11 @@
     '((side . bottom)))))
 
 (global-set-key (kbd "C-t") #'weilbach/pop-shell)
+
+;; TRAMP
+(require 'tramp)
+(setq tramp-default-method "ssh")
+
 
 ;;; Editing
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

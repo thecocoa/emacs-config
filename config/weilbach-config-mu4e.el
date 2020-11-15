@@ -30,7 +30,7 @@
             smtpmail-starttls-credentials '(("securesmtp.t-online.de" 465 nil nil))
             smtpmail-auth-credentials
             '(("securesmtp.t-online.de" 465 "felix.weilbach@t-online.de" nil))
-            smtpmail-default-smtp-server "smtp.gmail.com"
+            smtpmail-default-smtp-server "securesmtp.t-online.de"
             smtpmail-smtp-server "securesmtp.t-online.de"
             smtpmail-smtp-service 465
             smtpmail-stream-type 'ssl)

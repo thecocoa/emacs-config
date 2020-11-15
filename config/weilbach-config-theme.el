@@ -3,13 +3,11 @@
 ;;; CODE:
 
 (defvar weilbach/dark-theme
-  'spacemacs-dark
-  ;'deeper-blue
+  'weilbach-dark
   "My dark theme."
   )
 (defvar weilbach/light-theme
-  'spacemacs-light
-;  nil
+  'weilbach-light
   "My light theme."
   )
 
@@ -132,9 +130,6 @@ Set the theme if changed."
         (sleep-for 2)))))
 
 (setq-default custom-save-themes t)
-
-(use-package spacemacs-theme
-  :defer t)
 
 ;; Set dark or light theme based on the OS theme
 

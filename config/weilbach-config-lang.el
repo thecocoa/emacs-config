@@ -173,6 +173,9 @@
 ;;; Windows PowerShell
 (use-package powershell)
 
+;;; TypeScript
+(use-package typescript-mode)
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

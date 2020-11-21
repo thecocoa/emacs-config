@@ -28,7 +28,10 @@
               indent-tabs-mode nil
               mouse-yank-at-point t
 
-              ;; gc-cons-threshold 1000000
+              ;; For lsp
+              garbage-collection-messages t
+              gc-cons-threshold 100000000 ;; 100mb
+              read-process-output-max (* 1024 1024) ;; 1mb
 
               initial-scratch-message nil
               initial-major-mode 'fundamental-mode

@@ -183,6 +183,9 @@
 ;;; TypeScript
 (use-package typescript-mode)
 
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

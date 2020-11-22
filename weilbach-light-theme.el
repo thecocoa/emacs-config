@@ -11,7 +11,7 @@
                         '(default ((t (:foreground "black" :background "white" :bold nil))) t)
 
                         '(font-lock-function-name-face ((t (:foreground "Purple" :bold t))) t)
-                        '(font-lock-keyword-face ((t (:foreground "blue" :bold t))) t)
+                        '(font-lock-keyword-face ((t (:foreground "RoyalBlue2" :bold t))) t)
                         '(font-lock-type-face ((t (:foreground "ForestGreen" :bold t))) t)
                         '(font-lock-comment-face ((t (:foreground "Firebrick" :bold nil :slant italic))) t)
                         '(font-lock-string-face ((t (:foreground "SeaGreen" :bold nil))) t)

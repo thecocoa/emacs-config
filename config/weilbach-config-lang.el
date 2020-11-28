@@ -114,6 +114,7 @@
 (use-package json-mode)
 
 ;;; PlantUML
+;; Requires plantuml
 (use-package plantuml-mode
   :config
   (setq-default plantuml-default-exec-mode 'executable))
@@ -136,9 +137,7 @@
 ;; Haskell
 (use-package haskell-mode)
 
-;; JavaScript
-(use-package js2-mode)
-
+;;; XML
 (use-package nxml-mode
   :ensure nil
   :config
@@ -161,14 +160,63 @@
 
     (define-key nxml-mode-map (kbd "C-c h") 'hs-toggle-hiding)))
 
-(use-package web-mode)
+;;; Web Mode
+(use-package web-mode
+  :config
+  (progn
+    (setq web-mode-enable-engine-detection t)
+    )
+  :mode ("\\.html?\\'"
+         "\\.phtml\\'"
+         "\\.tpl\\.php\\'"
+         "\\.[agj]sp\\'"
+         "\\.as[cp]x\\'"
+         "\\.erb\\'"
+         "\\.mustache\\'"
+         "\\.djhtml\\'"
+         )
+  )
 
+;;; TypeScript
+;; Requires typescript and typescript-language-server
+;; Install: npm -g install typescript typescript-language-server
+(use-package typescript-mode
+    :hook
+    (typescript-mode . lsp-deferred))
+
+;; JavaScript
+;; Requires typescript-language-server
+;; Install: npm -g install typescript-language-server
+(use-package js-mode
+  :ensure nil
+  :mode "\\.js\\'"
+  :hook
+  (js-mode . lsp-deferred)
+  )
+
+(use-package js2-mode
+  :hook
+  (js-mode . js2-minor-mode)
+  )
+
+;; Requires prettier
+;; Install: npm -g install prettier
+(use-package prettier-js
+  :hook
+  ((javascript-mode-hook . prettier-js-mode)
+   (js2-mode-hook . prettier-js-mode)
+   (typescript-mode-hook . prettier-js-mode)
+   (web-mode-hook . prettier-js-mode))
+  )
+
+;;; C#
 (use-package csharp-mode
   :hook
   ((csharp-mode . lsp-deferred)
    )
   )
 
+;;; Lua
 (use-package lua-mode)
 
 ;;; HLSL
@@ -177,9 +225,6 @@
 
 ;;; Windows PowerShell
 (use-package powershell)
-
-;;; TypeScript
-(use-package typescript-mode)
 
 ;;; Nix
 (use-package nix-mode

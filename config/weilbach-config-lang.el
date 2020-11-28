@@ -33,9 +33,8 @@
   )
 
 (use-package python-pytest
-  :bind
-  (:map python-mode
-        ("C-c t" . python-pytest-dispatch))
+  :config
+  (define-key python-mode-map (kbd "C-c t") 'python-pytest-dispatch)
   )
 
 ;;; LaTeX

@@ -27,17 +27,17 @@
   ((c-mode . clang-format+-mode)
    (c++-mode . clang-format+-mode)))
 
-;; (use-package python
-;;   :hook
-;;   ((python-mode . lsp-deferred))
-;;   )
+(use-package python
+  :hook
+  ((python-mode . lsp-deferred))
+  )
 
-(use-package lsp-python-ms
-  :ensure t
-  :init (setq lsp-python-ms-auto-install-server t)
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-python-ms)
-                          (lsp-deferred))))
+;; (use-package lsp-python-ms
+;;   :ensure t
+;;   :init (setq lsp-python-ms-auto-install-server t)
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-python-ms)
+;;                           (lsp-deferred))))
 
 ;;; LaTeX
 (use-package tex
@@ -183,8 +183,13 @@
 ;;; TypeScript
 (use-package typescript-mode)
 
+;;; Nix
 (use-package nix-mode
   :mode "\\.nix\\'")
+
+;;; Docker
+(use-package dockerfile-mode
+  :mode "Dockerfile\\'")
 
 (provide 'weilbach-config-lang)
 

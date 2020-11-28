@@ -37,7 +37,7 @@ Transparency can be set by setting the variable WEILBACH/ALPHA."
                100)
           weilbach/alpha '(100 . 100)))))
 
-(global-set-key (kbd "C-c t") 'weilbach/toggle-transparency)
+;; (global-set-key (kbd "C-c t") 'weilbach/toggle-transparency)
 
 (defun weilbach/set-frame-size (width height)
   "Set the current frames WIDTH and HEIGHT."

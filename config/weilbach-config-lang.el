@@ -32,12 +32,11 @@
   ((python-mode . lsp-deferred))
   )
 
-;; (use-package lsp-python-ms
-;;   :ensure t
-;;   :init (setq lsp-python-ms-auto-install-server t)
-;;   :hook (python-mode . (lambda ()
-;;                           (require 'lsp-python-ms)
-;;                           (lsp-deferred))))
+(use-package python-pytest
+  :bind
+  (:map python-mode
+        ("C-c t" . python-pytest-dispatch))
+  )
 
 ;;; LaTeX
 (use-package tex

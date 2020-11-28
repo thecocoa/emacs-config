@@ -291,6 +291,10 @@
     (save-place-mode 1)
     ))
 
+(use-package direnv
+  :config
+  (direnv-mode))
+
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

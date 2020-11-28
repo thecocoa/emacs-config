@@ -291,38 +291,6 @@
     (save-place-mode 1)
     ))
 
-;; (use-package workgroups
-;;   :config
-;;   (progn
-;;     (setq wg-prefix-key (kbd "C-c w"))
-;;     ))
-
-;; (use-package persp-mode
-;;   :config
-;;   (progn
-;;     (setq wg-morph-on nil) ;; switch off animation
-;;     (setq persp-autokill-buffer-on-remove 'kill-weak)
-;;     ;; (add-hook 'after-init-hook #'(lambda () (persp-mode 1)))
-;;     ))
-
-(use-package edit-server
-  :ensure t
-  :commands edit-server-start
-  :init (if after-init-time
-              (edit-server-start)
-            (add-hook 'after-init-hook
-                      #'(lambda() (edit-server-start))))
-  :config (setq edit-server-new-frame-alist
-                '((name . "Edit with Emacs FRAME")
-                  (top . 200)
-                  (left . 200)
-                  (width . 80)
-                  (height . 25)
-                  (minibuffer . t)
-                  (menu-bar-lines . t)
-                  (window-system . x))))
-
-
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

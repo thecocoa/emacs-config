@@ -30,6 +30,7 @@
 (require 'weilbach-config-lsp)
 (require 'weilbach-config-lang)
 (require 'weilbach-config-mu4e)
+(require 'weilbach-config-misc)
 
 ;; Maybe there is a user config
 (ignore-errors (load (concat

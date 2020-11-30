@@ -31,6 +31,7 @@
 (require 'weilbach-config-lang)
 (require 'weilbach-config-mu4e)
 (require 'weilbach-config-misc)
+(require 'weilbach-config-emms)
 
 ;; Maybe there is a user config
 (ignore-errors (load (concat

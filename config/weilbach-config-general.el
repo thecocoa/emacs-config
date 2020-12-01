@@ -36,6 +36,7 @@
               initial-scratch-message nil
               initial-major-mode 'fundamental-mode
 
+              delete-by-moving-to-trash t
               )
 
 ;; Supress startup message

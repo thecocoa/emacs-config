@@ -119,12 +119,6 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 (global-set-key (kbd "C-x l") 'goto-line)
 
-(global-set-key (kbd "C-c M") 'mpc)
-(global-set-key (kbd "C-c m p") 'mpc-play)
-(global-set-key (kbd "C-c m P") 'mpc-pause)
-(global-set-key (kbd "C-c m n") 'mpc-next)
-(global-set-key (kbd "C-c m b") 'mpc-prev)
-
 ;; Terminal
 (defun weilbach/pop-shell (arg)
   "Pop a shell in a side window and ass ARG to ‘shell’."

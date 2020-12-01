@@ -11,6 +11,9 @@
     (require 'emms-setup)
     (emms-all)
 
+    (emms-mode-line 0)
+    (emms-playing-time 0)
+
     (setq )
 
     (setq emms-player-list '(emms-player-vlc

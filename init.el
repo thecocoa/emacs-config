@@ -29,6 +29,7 @@
 (require 'weilbach-config-helm)
 (require 'weilbach-config-lsp)
 (require 'weilbach-config-lang)
+(require 'weilbach-config-dev)
 (require 'weilbach-config-mu4e)
 (require 'weilbach-config-misc)
 (require 'weilbach-config-emms)

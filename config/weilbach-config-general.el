@@ -297,6 +297,11 @@
   :config
   (direnv-mode))
 
+(use-package rainbow-delimiters
+  :hook
+  (prog-mode . rainbow-delimiters-mode)
+  )
+
 (provide 'weilbach-config-general)
 
 ;;; weilbach-config-general.el ends here

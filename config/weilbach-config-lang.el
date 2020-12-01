@@ -234,6 +234,10 @@
 (use-package dockerfile-mode
   :mode "Dockerfile\\'")
 
+;;; Hugo
+(use-package hugo
+  :load-path "external/hugo-el")
+
 (provide 'weilbach-config-lang)
 
 ;;; weilbach-config-lang.el ends here

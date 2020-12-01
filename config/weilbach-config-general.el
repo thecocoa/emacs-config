@@ -162,9 +162,16 @@
   (progn
     (global-company-mode)
     )
+
   :custom
   (company-minimum-prefix-length 3)
-  (company-idle-delay 0.0))
+  (company-idle-delay 0.0)
+
+  :bind
+  (:map company-active-map
+        ("C-n" . company-select-next)
+        ("C-p" . company-select-previous))
+  )
 
 ;;; Flycheck
 (use-package flycheck
